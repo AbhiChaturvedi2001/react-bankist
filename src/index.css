@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+ul a{
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
