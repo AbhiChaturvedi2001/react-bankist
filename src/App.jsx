@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BricksContainer from "./component/BricksContainer";
-import Header from "./component/header";
+import Header from "./component/Header";
 import Home from "./component/Home";
 import Transaction from "./component/Transaction";
 
