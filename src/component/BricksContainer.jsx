@@ -1,4 +1,3 @@
-import React from "react";
 import { MdDelete } from "react-icons/md";
 import { BsDownload } from "react-icons/bs";
 
@@ -24,6 +23,7 @@ const BricksContainer = ({ Bricks1data,deleteTransaction }) => {
               Category,
               FinalAmount,
             } = items;
+            const totalAmount = FinalAmount + Number(Delivery) - Number(purchaseAmount)
             return (
               <>
                 <div
@@ -41,7 +41,7 @@ const BricksContainer = ({ Bricks1data,deleteTransaction }) => {
                     <div className="mr-5">{Category} No.</div>
                     <div className="mr-5">
                       Paid-Amt :{" "}
-                      {FinalAmount + Number(Delivery) - Number(purchaseAmount)}
+                      {Math.abs(totalAmount)}
                     </div>
                     <MdDelete onClick={() => deleteTransaction(index)} className="text-3xl cursor-pointer" />
                     <BsDownload className="text-3xl ml-3 cursor-pointer" />
