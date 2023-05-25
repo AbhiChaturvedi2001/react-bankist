@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BricksContainer from "./component/BricksContainer";
 import Header from "./component/Header";
@@ -15,7 +16,12 @@ const App = () => {
   const [bricksNumber, setBricksNumber] = useState();
 
   // bricks data
-  const [Bricks1data, setBricks1Data] = useState([]);
+  const initalArra = localStorage.getItem("Bricks1data")?JSON.parse(localStorage.getItem("Bricks1data")) : [];
+  const [Bricks1data, setBricks1Data] = useState(initalArra);
+
+  useEffect(() => {
+    localStorage.setItem("Bricks1data", JSON.stringify(Bricks1data));
+  },[Bricks1data])
 
   const addingTransation = () => {
     let calcAmount = Number(eval(TotalAmount));
@@ -32,6 +38,7 @@ const App = () => {
           Category: bricksNumber,
         },
       ]);
+     
       alert("Transaction successfull Added ");
       setClientName("");
       setadvanceAmount("");
