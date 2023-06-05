@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import {useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BricksContainer from "./component/BricksContainer";
+import Diesel from "./component/Diesel";
 import Header from "./component/Header";
 import Home from "./component/Home";
 import Transaction from "./component/Transaction";
+import Turi from "./component/Turi";
+import Machine from "./component/Machine"
 
 const App = () => {
   const [clietName, setClientName] = useState("");
@@ -14,10 +16,12 @@ const App = () => {
   const [Deliverycharges, setDeliverycharges] = useState();
   const [TotalAmount, setTotalAmount] = useState();
   const [bricksNumber, setBricksNumber] = useState();
+  const [searchData , setsearchData] = useState("");
 
   // bricks data
   const initalArra = localStorage.getItem("Bricks1data")?JSON.parse(localStorage.getItem("Bricks1data")) : [];
   const [Bricks1data, setBricks1Data] = useState(initalArra);
+
 
   useEffect(() => {
     localStorage.setItem("Bricks1data", JSON.stringify(Bricks1data));
@@ -172,8 +176,11 @@ const App = () => {
             />
             <Route
               path="/brickData"
-              element={<BricksContainer Bricks1data={Bricks1data} deleteTransaction={deleteTransaction} />}
+              element={<BricksContainer Bricks1data={Bricks1data} deleteTransaction={deleteTransaction} searchData={searchData} setsearchData={setsearchData} setBricks1Data={setBricks1Data} />}
             />
+            <Route path="/diesel" element={ <Diesel /> } />
+            <Route path="/turi" element={ <Turi /> } />
+            <Route path="/machine" element={ <Machine /> } />
           </Routes>
         </BrowserRouter>
       </div>

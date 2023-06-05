@@ -1,7 +1,8 @@
 import { MdDelete } from "react-icons/md";
 import { BsDownload } from "react-icons/bs";
+import { useState } from "react";
 
-const BricksContainer = ({ Bricks1data,deleteTransaction }) => {
+const BricksContainer = ({ Bricks1data ,deleteTransaction , setsearchData, searchData, setBricks1Data }) => {
   return (
     <>
       <div className="w-[100%] px-3 overflow-scroll">
@@ -10,10 +11,18 @@ const BricksContainer = ({ Bricks1data,deleteTransaction }) => {
             className=" mt-4 w-[100%] py-2 rounded-md placeholder:text-black  placeholder:px-2  bg-gray-400 focus:px-3"
             type="text"
             placeholder="search your data"
+            value={searchData}
+            onChange={(e) => setsearchData(e.target.value)}
           />
         </div>
         <div>
-          {Bricks1data.map((items, index) => {
+          {Bricks1data.filter((val) => {
+            if(searchData === ""){
+              return val;
+            }else if(val.title.toLowerCase().includes(searchData.toLowerCase()) || val.Category.){
+              return searchData;
+            }
+          }).map((items, index) => {
             const {
               title,
               purchaseAmount,
