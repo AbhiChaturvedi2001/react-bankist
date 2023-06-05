@@ -19,7 +19,7 @@ const BricksContainer = ({ Bricks1data ,deleteTransaction , setsearchData, searc
           {Bricks1data.filter((val) => {
             if(searchData === ""){
               return val;
-            }else if(val.title.toLowerCase().includes(searchData.toLowerCase()) || val.Category.){
+            }else if(val.title.toLowerCase().includes(searchData.toLowerCase())){
               return searchData;
             }
           }).map((items, index) => {
